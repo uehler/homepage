@@ -1,0 +1,171 @@
+@bg-color: #fafafa;
+@element-color: #ffffff;
+@accent-color: #ff4081;
+
+@text-base-color: #000000;
+@text-color: lighten(@text-base-color, 13%);
+@hint-text-color: lighten(@text-base-color, 62%);
+@link-color: #004EFF;
+
+body {
+  font-size: 25px;
+  color: @text-color;
+  font-family: "brandon-grotesque", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  margin: 10% 10% 0 10%;
+  background-color: @bg-color;
+
+  @media screen and (max-device-width: 360px) {
+    margin: 10px 10px 0 10px;
+  }
+  @media screen and (min-device-width: 1280px) {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+h1, h2, h3, p, div, form {
+  padding: 10px;
+  margin-top: 0;
+
+}
+
+h1, h2, h3 {
+  color: @text-base-color;
+}
+
+p, div {
+  background-color: @element-color;
+  margin-bottom: 1em;
+}
+
+.shadow {
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .2);
+}
+
+h2 {
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: @link-color;
+  z-index: 2;
+  position: relative;
+}
+
+a:after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: linear 0.15s;
+  transition: linear 0.15s;
+  background: currentColor;
+  z-index: -1;
+}
+
+a:hover:after {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1)
+}
+
+//a:hover {
+//  text-decoration: underline;
+//}
+
+.pink {
+  color: #e50065;
+}
+
+.shopware {
+  color: #189eff;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  &.error {
+    color: red;
+  }
+  &.success {
+    color: green;
+  }
+}
+
+.contact-form {
+  margin-bottom: 0;
+
+  .error {
+    border: 1px solid red;
+  }
+
+  ::-webkit-input-placeholder {
+    color: @hint-text-color;
+  }
+  ::-moz-placeholder {
+    color: @hint-text-color;
+  }
+  /* firefox 19+ */
+  :-ms-input-placeholder {
+    color: @hint-text-color;
+  }
+  /* ie */
+  input:-moz-placeholder {
+    color: @hint-text-color;
+  }
+
+  input, textarea {
+    font-size: 0.8em;
+    border: 0;
+    background: @bg-color;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+  }
+
+  input:not([type=submit]), textarea {
+    width: 100%;
+  }
+
+  input[type=submit] {
+    cursor: pointer;
+    float: right;
+    background: @element-color;
+    color: @link-color;
+  }
+}
+
+#imprint-trigger {
+  cursor: pointer;
+}
+
+.clearfix {
+  clear: both;
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  font-size: 0.5em;
+  margin-top: 150px;
+  margin-bottom: 150px;
+
+  text-align: center;
+
+  bottom: 0;
+  div, p {
+    background-color: @bg-color;
+    margin-top: 0;
+  }
+}
