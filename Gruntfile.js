@@ -1,27 +1,71 @@
+var srcPath = '_resources/';
+var lessSrcPath = srcPath + 'less/';
+var lessDestPath = srcPath + 'css/';
+var jsSrcPath = srcPath + 'js/';
+var jsDestPath = jsSrcPath;
+var tplSrcPath = srcPath + 'tpl/';
+var tplDestPath = tplSrcPath;
+//console.log(tplSrcPath);
 module.exports = function (grunt) {
     grunt.initConfig({
-        concat: {
-            options: {
-                separator: ';'
+        watch: { // watch for file changes
+            less: {
+                files: [
+                    lessSrcPath + '*.less'
+                ],
+                tasks: [
+                    'less',
+                    'notify:watch'
+                ]
             },
-            dist: {
-                src: ['dev/_resources/js/*.js'],
-                dest: 'dist/all.js'
+            js: {
+                files: [
+                    jsSrcPath + 'all_dev.js'
+                ],
+                tasks: [
+                    'jshint',
+                    'uglify',
+                    'notify:watch'
+                ]
+            },
+            html: {
+                files: [
+                    tplSrcPath + 'content_dev.html'
+                ],
+                tasks: [
+                    'htmlmin',
+                    'notify:watch'
+                ]
             }
         },
-        uglify: {
-            options: {
-                banner: '/*! test <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
-            dist: {
-                files: {
-                    'dist/all.min.js': ['<%= concat.dist.dest %>']
-                }
+
+        jshint: { // check if js has errors
+            files: [
+                'Gruntfile.js',
+                jsSrcPath + 'all_dev.js'
+            ]
+        },
+
+        uglify: { // minify js
+            src: {
+                src: [
+                    jsSrcPath + 'all_dev.js'
+                ],
+                dest: jsDestPath + 'all.js'
             }
         },
-        jshint: {
-            files: ['Gruntfile.js', 'dev/_resources/js/*.js']
+
+        less: { // compile less to css
+            options: {
+                compress: true,
+                sourceMap: true
+            },
+            src: {
+                src: lessSrcPath + 'all.less',
+                dest: lessDestPath + 'all.css'
+            }
         },
+
         htmlmin: {
             dist: {
                 options: {
@@ -30,33 +74,12 @@ module.exports = function (grunt) {
                 },
 
                 files: {
-                    'dist/tpl/content.html': 'dev/tpl/content.html'
-                }
-            }
-        },
-        less: {
-            dist: {
-                options: {
-                    compress: true,
-                    sourceMap: true
-                },
-                files: {
-                    "dist/all.css": "dev/_resources/less/all.less"
+                    '_resources/tpl/content.html': '_resources/tpl/content_dev.html'
                 }
             }
         },
 
-
-        watch: {
-            files: [
-                'dev/_resources/js/*.js',
-                'dev/_resources/less/*.less',
-                'dev/tpl/*.html'
-            ],
-            tasks: ['jshint', 'concat', 'uglify', 'htmlmin', 'less', 'notify:watch']
-        },
-
-        notify: {
+        notify: { // send notification if compiling has finished
             watch: {
                 options: {
                     message: 'compiled successful',
@@ -69,10 +92,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-notify');
 
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'htmlmin', 'less', 'notify:watch']);
+
+    grunt.registerTask('default', [
+        'jshint',
+        'uglify',
+        'less',
+        'htmlmin',
+        'notify:watch'
+    ]);
 };

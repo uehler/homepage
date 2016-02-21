@@ -1,0 +1,1 @@
+function init(){document.getElementById("imprint-trigger").onclick=triggerImprint}function triggerImprint(){var a=document.getElementById("imprint");a.classList.contains("hidden")?a.classList.remove("hidden"):a.classList.add("hidden")}window.onload=init;

@@ -34,7 +34,7 @@ if (!empty($_POST)) {
     }
 }
 
-$htmlcontent = file_get_contents('tpl/content.html');
+$htmlcontent = file_get_contents('_resources/tpl/content.html');
 
 
 if (empty($error)) {

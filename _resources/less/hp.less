@@ -1,18 +1,15 @@
 @bg-color: #fafafa;
 @element-color: #ffffff;
-@accent-color: #ff4081;
-
 @text-base-color: #000000;
 @text-color: lighten(@text-base-color, 13%);
-@hint-text-color: lighten(@text-base-color, 62%);
 @link-color: #004EFF;
+@error-color: red;
+@success-color: green;
 
 body {
   font-size: 25px;
   color: @text-color;
   font-family: "brandon-grotesque", sans-serif;
-  font-style: normal;
-  font-weight: 500;
   margin: 10% 10% 0 10%;
   background-color: @bg-color;
 
@@ -26,23 +23,46 @@ body {
   }
 }
 
-h1, h2, h3, p, div, form {
-  padding: 10px;
-  margin-top: 0;
-
-}
-
 h1, h2, h3 {
-  color: @text-base-color;
+  margin-top: 0;
 }
 
-p, div {
-  background-color: @element-color;
-  margin-bottom: 1em;
-}
-
-.shadow {
+.card {
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .2);
+  padding: 20px;
+  margin-bottom: 1em;
+  background-color: white;
+
+  p {
+    margin: 0;
+  }
+}
+
+.card-sm {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.container {
+  width: 50%;
+  float: left;
+  padding-right: 10px;
+  box-sizing: border-box;
+  @media screen and (max-device-width: 768px) {
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.container ~ .container {
+  padding-left: 10px;
+  padding-right: 0;
+  @media screen and (max-device-width: 768px) {
+    padding: 0;
+  }
 }
 
 h2 {
@@ -79,11 +99,13 @@ a:hover:after {
   transform: scaleX(1)
 }
 
-//a:hover {
-//  text-decoration: underline;
-//}
+.social {
+  a:hover:after {
+    transform: scaleX(0);
+  }
+}
 
-.pink {
+.conexco {
   color: #e50065;
 }
 
@@ -97,57 +119,34 @@ a:hover:after {
 
 p {
   &.error {
-    color: red;
+    margin-bottom: 1em;
+    color: @error-color;
   }
   &.success {
-    color: green;
+    margin-bottom: 1em;
+    color: @success-color;
   }
 }
 
-.contact-form {
-  margin-bottom: 0;
+input, textarea {
+  box-sizing: border-box;
+  font-size: 0.8em;
+  border: 0;
+  background: @bg-color;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  width: 100%;
 
-  .error {
-    border: 1px solid red;
-  }
-
-  ::-webkit-input-placeholder {
-    color: @hint-text-color;
-  }
-  ::-moz-placeholder {
-    color: @hint-text-color;
-  }
-  /* firefox 19+ */
-  :-ms-input-placeholder {
-    color: @hint-text-color;
-  }
-  /* ie */
-  input:-moz-placeholder {
-    color: @hint-text-color;
-  }
-
-  input, textarea {
-    font-size: 0.8em;
-    border: 0;
-    background: @bg-color;
-    margin: 10px 0 10px 0;
-    padding: 10px;
-  }
-
-  input:not([type=submit]), textarea {
-    width: 100%;
-  }
-
-  input[type=submit] {
-    cursor: pointer;
-    float: right;
-    background: @element-color;
-    color: @link-color;
+  &.error {
+    border: 1px solid @error-color;
   }
 }
 
-#imprint-trigger {
+input[type=submit] {
   cursor: pointer;
+  background: @element-color;
+  color: @link-color;
+  text-align: right;
 }
 
 .clearfix {
@@ -158,14 +157,7 @@ p {
 
 footer {
   font-size: 0.5em;
-  margin-top: 150px;
-  margin-bottom: 150px;
-
+  margin: 150px 0;
+  cursor: pointer;
   text-align: center;
-
-  bottom: 0;
-  div, p {
-    background-color: @bg-color;
-    margin-top: 0;
-  }
 }
