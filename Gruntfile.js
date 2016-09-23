@@ -57,8 +57,7 @@ module.exports = function (grunt) {
 
         less: { // compile less to css
             options: {
-                compress: true,
-                sourceMap: true
+                compress: true
             },
             src: {
                 src: lessSrcPath + 'all.less',
