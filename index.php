@@ -18,7 +18,9 @@ if (!empty($_POST)) {
         $error['content'] = true;
     }
 
-    if (($_SESSION['mailSent'] === true && $_SESSION['mailSentTime'] > time()) || $_COOKIE['mailSent'] === true) {
+    if ((!empty($_SESSION['mailSent']) && $_SESSION['mailSent'] === true && $_SESSION['mailSentTime'] > time())
+        || (!empty($_COOKIE['mailSent']) && $_COOKIE['mailSent'] === true)
+    ) {
         $error['mailSent'] = true;
     }
 
@@ -56,7 +58,7 @@ if (empty($error)) {
     $htmlerrors .= '</p>';
 }
 
-if ($success === true) {
+if (!empty($success) && $success === true) {
     $htmlsuccess = '<p class="success">Thank you for your email. I will answer it as soon as possible.</p>';
 } else {
     $htmlsuccess = '';
@@ -84,8 +86,8 @@ if (!empty($content)) {
     $htmlMailError['content']['value'] = $content;
 }
 
-$css = '<style>'.file_get_contents('_resources/css/all.css').'</style>';
-$js = '<script>'.file_get_contents('_resources/js/all.js').'</script>';
+$css = '<style>' . file_get_contents('_resources/css/all.css') . '</style>';
+$js = '<script>' . file_get_contents('_resources/js/all.js') . '</script>';
 
 
 $htmlcontent = str_replace('$$$js$$$', $css, $htmlcontent);
