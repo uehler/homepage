@@ -3,6 +3,10 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{ENV:HTTPS} !=on
 RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 
+Redirect 301 /fb https://www.facebook.com/uli.ehler
+Redirect 301 /twitter https://twitter.com/uligeller
+Redirect 301 /github https://github.com/uehler
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
