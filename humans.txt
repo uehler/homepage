@@ -1,0 +1,9 @@
+/* TEAM */
+Your title: Uli Ehler
+Site: https://uli.io
+Twitter: uligeller
+Location: Munich, Germany
+
+/* SITE */
+Standards: HTML5, CSS3, Javascript
+Software: Let's encrypt, grunt, PhpStorm
