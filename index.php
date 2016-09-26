@@ -1,4 +1,10 @@
 <?php
+header("Content-Security-Policy: default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'");
+header('Strict-Transport-Security: max-age=31536000');
+header('X-Frame-Options: DENY');
+header('X-XSS-Protection: 1');
+header('X-Content-Type-Options: nosniff');
+
 session_start();
 
 if (!empty($_POST)) {
