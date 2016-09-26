@@ -90,8 +90,8 @@ $css = '<style>' . file_get_contents('_resources/css/all.css') . '</style>';
 $js = '<script>' . file_get_contents('_resources/js/all.js') . '</script>';
 
 
-$htmlcontent = str_replace('$$$js$$$', $css, $htmlcontent);
-$htmlcontent = str_replace('$$$css$$$', $js, $htmlcontent);
+$htmlcontent = str_replace('$$$js$$$', $js, $htmlcontent);
+$htmlcontent = str_replace('$$$css$$$', $css, $htmlcontent);
 $htmlcontent = str_replace('$$$error$$$', $htmlerrors, $htmlcontent);
 $htmlcontent = str_replace('$$$success$$$', $htmlsuccess, $htmlcontent);
 $htmlcontent = str_replace('data-mailerror="name"', $htmlMailError['name'], $htmlcontent);
