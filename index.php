@@ -92,6 +92,11 @@ if (!empty($content)) {
     $htmlMailError['content']['value'] = $content;
 }
 
+
+$birthday = new DateTime('1991-10-02');
+$today = new DateTime('today');
+$age = $birthday->diff($today)->y;
+
 $css = '<style>' . file_get_contents('_resources/css/all.css') . '</style>';
 $js = '<script>' . file_get_contents('_resources/js/all.js') . '</script>';
 
@@ -104,5 +109,6 @@ $htmlcontent = str_replace('data-mailerror="name"', $htmlMailError['name'], $htm
 $htmlcontent = str_replace('data-mailerror="email"', $htmlMailError['email'], $htmlcontent);
 $htmlcontent = str_replace('data-mailerror="content"', $htmlMailError['content']['class'], $htmlcontent);
 $htmlcontent = str_replace('$$$content$$$', $htmlMailError['content']['value'], $htmlcontent);
+$htmlcontent = str_replace('$$$age$$$', $age, $htmlcontent);
 
 echo $htmlcontent;
