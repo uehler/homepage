@@ -1,0 +1,6 @@
+{
+    "require": {
+        "oyejorge/less.php": "~1.5",
+        "matthiasmullie/minify": "^1.3"
+    }
+}

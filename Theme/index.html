@@ -16,18 +16,18 @@
         <link rel="me" href="https://www.facebook.com/uli.ehler" type="text/html">
         <link rel="me" href="https://github.com/uehler" type="text/html">
 
-        <link rel="icon" href="_resources/img/mario-152.png" sizes="152x152" type="image/png">
+        <link rel="icon" href="Theme/img/mario-152.png" sizes="152x152" type="image/png">
         <meta name="theme-color" content="#fafafa">
-        <link rel="apple-touch-icon" href="_resources/img/mario-152.png">
+        <link rel="apple-touch-icon" href="Theme/img/mario-152.png">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="_resources/img/mario-144.png">
+        <meta name="msapplication-TileImage" content="Theme/img/mario-144.png">
 
 
         <!--open graph-->
         <meta property="og:title" content="Hi, I'm Uli"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://uli.io"/>
-        <meta property="og:image" content="_resources/img/me.png"/>
+        <meta property="og:image" content="Theme/img/me.png"/>
         <meta property="og:description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops."/>
 
         <!--twitter cards-->
@@ -36,13 +36,13 @@
         <!--<meta name="twitter:url" content="https://uli.io">-->
         <!--<meta name="twitter:title" content="Hi, I'm Uli">-->
         <!--<meta name="twitter:description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">-->
-        <!--<meta name="twitter:image" content="_resources/img/me.png">-->
+        <!--<meta name="twitter:image" content="Theme/img/me.png">-->
 
         <!--google + / schema.org-->
         <link href="https://plus.google.com/u/0/+UliEhler" rel="publisher">
         <meta itemprop="name" content="Hi, I'm Uli">
         <meta itemprop="description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">
-        <meta itemprop="image" content="_resources/img/me.png">
+        <meta itemprop="image" content="Theme/img/me.png">
 
 
         $$$css$$$
@@ -203,15 +203,15 @@
                     </p>
                 </div>
 
-                <div class="card">
+                <div id="contact" class="card">
                     <h3>contact me</h3>
                     $$$error$$$
 
                     $$$success$$$
-                    <form action="" method="post">
-                        <input type="text" name="name" placeholder="name" required data-mailerror="name">
-                        <input type="email" name="email" placeholder="mail" required data-mailerror="email">
-                        <textarea name="content" placeholder="tell me something about you" rows="5" required data-mailerror="content">$$$content$$$</textarea>
+                    <form action="#contact" method="post">
+                        <input type="text" name="name" placeholder="name" required class="$$$nameError$$$" value="$$$name$$$">
+                        <input type="email" name="email" placeholder="email" required class="$$$emailError$$$" value="$$$email$$$">
+                        <textarea name="content" placeholder="tell me something about you" rows="5" required class="$$$contentError$$$">$$$content$$$</textarea>
                         <input type="submit" value="submit &#9654;">
                     </form>
                 </div>
@@ -235,7 +235,6 @@
                 Social icons font: <a href="http://www.socicon.com" target="_blank" title="the social icons font">socicon</a>
             </p>
         </footer>
-        <!--<script async src="_resources/js/all.js"></script>-->
         $$$js$$$
     </body>
 </html>
