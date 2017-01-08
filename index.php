@@ -8,7 +8,8 @@ if (ENV == 'dev') {
 
 require_once('autoloader.php');
 
-header("Content-Security-Policy: default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'");
+$piwikTracker = 'https://piwik.ehlertainment.de';
+header("Content-Security-Policy: default-src 'self'; script-src 'self' " . $piwikTracker . " 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' " . $piwikTracker);
 header('Strict-Transport-Security: max-age=31536000');
 header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1');
