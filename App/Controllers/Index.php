@@ -8,21 +8,19 @@ class Index extends Controller
 {
     public function index()
     {
+        $formFields = array('name', 'email', 'content');
+        $htmlerrors = '';
+        $htmlsuccess = '';
+
         if (!empty($_POST)) {
-            $formData['name'] = trim(strip_tags($_POST['name']));
-            $formData['email'] = trim(strip_tags($_POST['email']));
-            $formData['content'] = trim(strip_tags($_POST['content']));
-
-            if (empty($formData['name'])) {
-                $error['name'] = true;
-            }
-
-            if (empty($formData['email']) || !filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
-                $error['email'] = true;
-            }
-
-            if (empty($formData['content'])) {
-                $error['content'] = true;
+            $formData = array();
+            foreach ($formFields as $item) {
+                $formData[$item] = trim(strip_tags($_POST[$item]));
+                if (empty($formData[$item])
+                    || ($item == 'email' && !filter_var($formData[$item], FILTER_VALIDATE_EMAIL))
+                ) {
+                    $error[$item] = true;
+                }
             }
 
             if ((!empty($_SESSION['mailSent']) && $_SESSION['mailSent'] === true && $_SESSION['mailSentTime'] > time())
@@ -37,51 +35,57 @@ class Index extends Controller
                 $_SESSION['mailSent'] = true;
                 $_SESSION['mailSentTime'] = $mailSentTime;
                 setcookie('mailSent', true, $mailSentTime);
-                $success = true;
+                $htmlsuccess = '<p class="success">Thank you for your email. I will answer it as soon as possible.</p>';
             } else {
-                $success = false;
+                $htmlerrors = $this->getErrorMessages($error);
             }
         }
 
-        if (empty($error)) {
-            $htmlerrors = '';
-        } else {
-            $htmlerrors = '<p class="error">';
-            if (!empty($error['mailSent'])) {
-                $htmlerrors .= '- you just sent me an email, please wait a few minutes<br>';
-            }
-            if (!empty($error['name'])) {
-                $htmlerrors .= '- please tell me your name<br>';
-            }
-            if (!empty($error['email'])) {
-                $htmlerrors .= '- please enter a valid email adress<br>';
-            }
-            if (!empty($error['content'])) {
-                $htmlerrors .= '- please tell something about you<br>';
-            }
-            $htmlerrors .= '</p>';
-        }
-
-        if (!empty($success) && $success === true) {
-            $htmlsuccess = '<p class="success">Thank you for your email. I will answer it as soon as possible.</p>';
-        } else {
-            $htmlsuccess = '';
-        }
-
-
-        $birthday = new \DateTime('1991-10-02');
-        $today = new \DateTime('today');
-        $age = $birthday->diff($today)->y;
 
         $this->view->addTemplate('index.html');
-        $this->view->assign('age', $age);
+        $this->view->assign('age', $this->getAge());
 
         $this->view->assign('error', $htmlerrors);
         $this->view->assign('success', $htmlsuccess);
 
-        foreach (array('name', 'email', 'content') as $item) {
+        foreach ($formFields as $item) {
             $this->view->assign($item, isset($formData[$item]) ? $formData[$item] : '');
             $this->view->assign($item . 'Error', isset($error[$item]) ? 'error' : '');
         }
+    }
+
+
+    private function getErrorMessages($errors)
+    {
+        $errors = array_keys($errors);
+        $htmlerrors = '<p class="error">';
+        foreach ($errors as $error) {
+            switch ($error) {
+                case 'name':
+                    $htmlerrors .= '- please tell me your name<br>';
+                    break;
+                case 'email':
+                    $htmlerrors .= '- please enter a valid email adress<br>';
+                    break;
+                case 'content':
+                    $htmlerrors .= '- please tell something about you<br>';
+                    break;
+                case 'mailSent':
+                    $htmlerrors .= '- you just sent me an email, please wait a few minutes<br>';
+                    break;
+            }
+        }
+        $htmlerrors .= '</p>';
+
+        return $htmlerrors;
+    }
+
+
+    private function getAge()
+    {
+        $birthday = new \DateTime('1991-10-02');
+        $today = new \DateTime('today');
+
+        return $birthday->diff($today)->y;
     }
 }

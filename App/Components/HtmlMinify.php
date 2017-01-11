@@ -85,7 +85,7 @@ class HtmlMinify
                 // Minify inline CSS declaration(s)
                 if (stripos($m[2], ' style=') !== false) {
                     $m[2] = preg_replace_callback('#( style=)([\'"]?)(.*?)\2#i', function ($m) {
-                        return $m[1] . $m[2] . minify_css($m[3]) . $m[2];
+                        return $m[1] . $m[2] . $this->minify_css($m[3]) . $m[2];
                     }, $m[2]);
                 }
 
