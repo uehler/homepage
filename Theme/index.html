@@ -44,17 +44,23 @@
 
         $$$css$$$
 
-        <script>
-            var idSite = 3;
-            var piwikTrackingApiUrl = 'https://piwik.ehlertainment.de/piwik.php';
-
-            var _paq = _paq || [];
-            _paq.push(['setTrackerUrl', piwikTrackingApiUrl]);
-            _paq.push(['setSiteId', idSite]);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-        </script>
-        <script src="//piwik.ehlertainment.de/piwik.js" async defer></script>
+        <!-- Piwik -->
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+		  _paq.push(["setCookieDomain", "*.uli.io"]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		    var u="//piwik.ehlertainment.de/";
+		    _paq.push(['setTrackerUrl', u+'piwik.php']);
+		    _paq.push(['setSiteId', '3']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<!-- End Piwik Code -->
     </head>
     <body>
         <main class="main">
@@ -230,5 +236,8 @@
             </p>
         </footer>
         $$$js$$$
+
+        <!-- piwik cookie notice -->
+        <iframe style="border: 0; height: 200px; width: 600px;" src="https://piwik.ehlertainment.de/index.php?module=CoreAdminHome&action=optOut&language=de"></iframe>
     </body>
 </html>
