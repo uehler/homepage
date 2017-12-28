@@ -1,10 +1,5 @@
-var srcPath = '_resources/';
-var lessSrcPath = srcPath + 'less/';
-var lessDestPath = srcPath + 'css/';
-var jsSrcPath = srcPath + 'js/';
-var jsDestPath = jsSrcPath;
-var tplSrcPath = srcPath + 'tpl/';
-var tplDestPath = tplSrcPath;
+var lessSrcPath = 'less/';
+var lessDestPath = 'css/';
 //console.log(tplSrcPath);
 module.exports = function (grunt) {
     grunt.initConfig({
@@ -15,43 +10,9 @@ module.exports = function (grunt) {
                 ],
                 tasks: [
                     'less',
+                    'uncss',
                     'notify:watch'
                 ]
-            },
-            js: {
-                files: [
-                    jsSrcPath + 'all_dev.js'
-                ],
-                tasks: [
-                    'jshint',
-                    'uglify',
-                    'notify:watch'
-                ]
-            },
-            html: {
-                files: [
-                    tplSrcPath + 'content_dev.html'
-                ],
-                tasks: [
-                    'htmlmin',
-                    'notify:watch'
-                ]
-            }
-        },
-
-        jshint: { // check if js has errors
-            files: [
-                'Gruntfile.js',
-                jsSrcPath + 'all_dev.js'
-            ]
-        },
-
-        uglify: { // minify js
-            src: {
-                src: [
-                    jsSrcPath + 'all_dev.js'
-                ],
-                dest: jsDestPath + 'all.js'
             }
         },
 
@@ -65,15 +26,10 @@ module.exports = function (grunt) {
             }
         },
 
-        htmlmin: {
+        uncss: {
             dist: {
-                options: {
-                    removeComments: true,
-                    collapseWhitespace: true
-                },
-
                 files: {
-                    '_resources/tpl/content.html': '_resources/tpl/content_dev.html'
+                    'css/all.css': ['index.html']
                 }
             }
         },
@@ -88,19 +44,15 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-notify');
 
 
     grunt.registerTask('default', [
-        'jshint',
-        'uglify',
         'less',
-        'htmlmin',
+        'uncss',
         'notify:watch'
     ]);
 };

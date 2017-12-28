@@ -1,0 +1,91 @@
+@bg-color: #fafafa;
+@element-color: #ffffff;
+@text-base-color: #000000;
+@text-color: lighten(@text-base-color, 13%);
+@link-color: #004EFF;
+@error-color: red;
+@success-color: green;
+
+body {
+    font-size: 25px;
+    color: @text-color;
+    font-family: 'avenir next', avenir, 'helvetica neue', helvetica, roboto, noto, ubuntu, 'segoe ui', arial, sans-serif;
+    margin: 5% 10% 0 10%;
+    background-color: @bg-color;
+    padding: 15px;
+
+    @media screen and (max-device-width: 420px) {
+        margin: 0;
+    }
+
+    @media screen and (min-device-width: 1280px) {
+        width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+h1, h2, h3 {
+    font-weight: 500;
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none;
+    color: @link-color;
+    z-index: 2;
+    position: relative;
+}
+
+a:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: linear 0.15s;
+    transition: linear 0.15s;
+    background: currentColor;
+    z-index: -1;
+}
+
+a:hover:after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1)
+}
+
+.social {
+    text-align: center;
+    a:hover:after {
+        transform: scaleX(0);
+    }
+}
+
+.conexco {
+    color: #e50065;
+}
+
+.shopware {
+    color: #189eff;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    font-size: 0.5em;
+    margin: 150px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 3px;
+}
