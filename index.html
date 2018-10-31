@@ -12,8 +12,8 @@
 
         <link rel="canonical" href="https://uli.io">
         <link rel="author" href="humans.txt">
+        <link rel="me" href="https://blog.uli.io" type="text/html">
         <link rel="me" href="https://twitter.com/uligeller" type="text/html">
-        <link rel="me" href="https://www.facebook.com/uli.ehler" type="text/html">
         <link rel="me" href="https://github.com/uehler" type="text/html">
 
         <meta name="theme-color" content="#fafafa">
@@ -37,44 +37,115 @@
         <meta itemprop="name" content="Hi, I'm Uli">
         <meta itemprop="description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">
 
-        <link rel="stylesheet" href="css/all.css?__inline=true">
+        <style>
+            body {
+                font-size: 25px;
+                color: #212121;
+                font-family: 'avenir next', avenir, 'helvetica neue', helvetica, roboto, noto, ubuntu, 'segoe ui', arial, sans-serif;
+                margin: 5% 10% 0 10%;
+                background-color: #fafafa;
+                padding: 15px
+            }
+
+            @media screen and (max-device-width: 420px) {
+                body {
+                    margin: 0
+                }
+            }
+
+            @media screen and (min-device-width: 1280px) {
+                body {
+                    width: 1024px;
+                    margin-left: auto;
+                    margin-right: auto
+                }
+            }
+
+            h1, h3 {
+                font-weight: 500;
+                margin-top: 0
+            }
+
+            a {
+                text-decoration: none;
+                color: #004EFF;
+                z-index: 2;
+                position: relative
+            }
+
+            a:after {
+                content: '';
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                -webkit-transform: scaleX(0);
+                -ms-transform: scaleX(0);
+                transform: scaleX(0);
+                -webkit-transition: linear .15s;
+                transition: linear .15s;
+                background: currentColor;
+                z-index: -1
+            }
+
+            a:hover:after {
+                -webkit-transform: scaleX(1);
+                -ms-transform: scaleX(1);
+                transform: scaleX(1)
+            }
+
+            .social a:hover:after {
+                transform: scaleX(0)
+            }
+
+            .conexco {
+                color: #e50065
+            }
+
+            .shopware {
+                color: #189eff
+            }
+
+            .hidden {
+                display: none
+            }
+
+            footer {
+                font-size: .5em;
+                margin: 150px 0;
+                cursor: pointer;
+                text-align: center
+            }
+
+            li {
+                margin-bottom: 3px
+            }
+        </style>
     </head>
     <body>
-        <main class="main">
-            <div class="">
-                <h1>Hi, I'm Uli</h1>
-                <p>
-                    a web developer from Munich, Germany. I am working at
-                    <a href="http://conexco.com" class="conexco" title="conexco - the e-commerce experts">conexco</a>,
-                    one of the leading agencies for <a href="http://shopware.com" class="shopware" title="shopware">shopware</a>
-                    shops.
-                </p>
-            </div>
-
-            <p class="social">
-                <a href="https://www.facebook.com/uli.ehler" class="socicon-facebook"></a>
-                <a href="https://twitter.com/uligeller" class="socicon-twitter"></a>
-                <a href="https://www.instagram.com/uli.io/" class="socicon-instagram"></a>
-                <a href="https://github.com/uehler" class="socicon-github"></a>
-                <a href="https://steamcommunity.com/id/uligeller/" class="socicon-steam"></a>
+        <main>
+            <h1>Hi, I'm Uli</h1>
+            <p>
+                a web developer from Munich, Germany. I am working at
+                <a href="http://conexco.com" class="conexco" title="conexco - the e-commerce experts">conexco</a>,
+                one of the leading agencies for <a href="http://shopware.com" class="shopware" title="shopware">shopware</a>
+                shops.
             </p>
 
-            <h3>
-                about me
-            </h3>
+            <h3>about me</h3>
             <ul>
                 <li>
                     skills:
                     <ul>
                         <li>PHP, MySQL, Javascript, HTML, LESS/CSS</li>
-                        <li>
-                            <a href="https://shopware.com">shopware</a>, Bootstrap, jQuery, Symfony, vue.js
-                        </li>
+                        <li><a href="https://shopware.com">shopware</a>, Bootstrap, jQuery, Symfony</li>
                     </ul>
                 </li>
-                <li>
-                    <a href="https://blog.uli.io" title="my Blog (german)">my Blog (german)</a>
-                </li>
+                <li><a rel="me" href="https://blog.uli.io" title="my blog (german)">my blog (german)</a></li>
+                <li><a rel="me" href="https://twitter.com/uligeller" title="my twitter">twitter</a></li>
+                <li><a rel="me" href="https://github.com/uehler" title="my github">github</a></li>
             </ul>
         </main>
         <footer>
@@ -89,12 +160,20 @@
                 <br>
                 <br>
                 built with &hearts;. Hostet on <a href="https://uberspace.de" title="uberspace">Uberspace</a>
-                <br>
-                <br>
-                Social icons font: <a href="http://www.socicon.com" target="_blank" title="the social icons font">socicon</a>
             </p>
         </footer>
 
-        <script src="js/all.js?__inline=true"></script>
+        <script>
+            function init() {
+                document.getElementById('imprint-trigger').onclick = triggerImprint
+            }
+
+            function triggerImprint() {
+                let imprint = document.getElementById('imprint');
+                imprint.classList.contains('hidden') ? imprint.classList.remove('hidden') : imprint.classList.add('hidden')
+            }
+
+            window.onload = init;
+        </script>
     </body>
 </html>
