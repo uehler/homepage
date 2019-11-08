@@ -5,13 +5,11 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
-        <title>Hi, I'm Uli</title>
-        <meta name="description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">
+        <title>Blog</title>
+        <meta name="description" content="Ulis Blog">
         <meta name="robots" content="index,follow">
-        <meta name="url" content="https://uli.io">
 
-        <link rel="canonical" href="https://uli.io">
-        <link rel="author" href="humans.txt">
+        <link rel="canonical" href="https://uli.io/blog/">
         <link rel="me" href="https://twitter.com/uligeller" type="text/html">
         <link rel="me" href="https://github.com/uehler" type="text/html">
 
@@ -19,20 +17,20 @@
         <meta name="msapplication-TileColor" content="#ffffff">
 
         <!--open graph-->
-        <meta property="og:title" content="Hi, I'm Uli"/>
+        <meta property="og:title" content="Blog"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://uli.io"/>
-        <meta property="og:description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops."/>
+        <meta property="og:description" content="Ulis Blog"/>
 
         <!--twitter cards-->
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@uligeller">
-        <meta name="twitter:title" content="Hi, I'm Uli">
-        <meta name="twitter:description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">
+        <meta name="twitter:title" content="Blog">
+        <meta name="twitter:description" content="Ulis Blog">
 
         <!-- schema.org-->
-        <meta itemprop="name" content="Hi, I'm Uli">
-        <meta itemprop="description" content="Hi, I'm Uli, a web developer from Munich, Germany. I am working at conexco, one of the leading agencies for shopware shops.">
+        <meta itemprop="name" content="Blog">
+        <meta itemprop="description" content="Ulis Blog">
 
         <style>
             body {
@@ -97,18 +95,6 @@
                 transform: scaleX(1)
             }
 
-            .conexco {
-                color: #e50065
-            }
-
-            .shopware {
-                color: #189eff
-            }
-
-            .hidden {
-                display: none
-            }
-
             footer {
                 font-size: .5em;
                 margin: 150px 0;
@@ -145,34 +131,8 @@
                     <path d="m87.832031 358.910156c4.230469 0 8.082031-2.777344 9.453125-6.765625 1.375-3.996093.007813-8.613281-3.367187-11.179687-3.238281-2.460938-7.730469-2.707032-11.226563-.632813-3.617187 2.144531-5.503906 6.492188-4.648437 10.605469.957031 4.582031 5.101562 7.972656 9.789062 7.972656zm0 0"/>
                 </svg>
             </a>
-            <h1>Hi, I'm Uli</h1>
-            <p>
-                a web developer from Munich, Germany. I am working at
-                <a href="https://conexco.com" class="conexco" title="conexco - the e-commerce experts" target="_blank" rel="noopener noreferrer">conexco</a>,
-                one of the leading agencies for <a href="https://shopware.com" class="shopware" title="shopware" target="_blank" rel="noopener noreferrer">shopware</a>
-                shops.
-            </p>
+            <h1>Blog</h1>
 
-            <h3>projects</h3>
-            <ul>
-                <li><a href="https://kletterpark.guide" title="Kletterpark Guide" target="_blank" rel="noopener noreferrer">Kletterpark Guide</a></li>
-                <li><a href="https://scouting.shop" title="Scouting Shop" target="_blank" rel="noopener noreferrer">Scouting Shop</a></li>
-            </ul>
-
-            <h3>about me</h3>
-            <ul>
-                <li>
-                    skills:
-                    <ul>
-                        <li>PHP, MySQL, Javascript, HTML, LESS/CSS</li>
-                        <li><a href="https://shopware.com" target="_blank" rel="noopener noreferrer">shopware</a>, Bootstrap, jQuery, Symfony</li>
-                    </ul>
-                </li>
-                <li><a href="https://twitter.com/uligeller" title="my twitter" target="_blank" rel="me noopener noreferrer">twitter</a></li>
-                <li><a href="https://github.com/uehler" title="my github" target="_blank" rel="me noopener noreferrer">github</a></li>
-            </ul>
-
-            <h3>blog (german)</h3>
             <ul>
                 <li><a href="/blog/2018" title="2018">2018</a></li>
                 <li><a href="/blog/lets-encrypt-pem-zertifikat-zu-crt-konvertieren" title="Let's Encrypt pem Zertifikat zu crt konvertieren">Let's Encrypt pem Zertifikat zu crt konvertieren</a></li>
@@ -180,31 +140,7 @@
         </main>
 
         <footer>
-            <p id="imprint-trigger">
-                Impressum
-            </p>
-            <p id="imprint" class="hidden">
-                Uli Ehler<br>
-                Nelkenweg 3<br>
-                82327 Tutzing<br>
-                <a href="mailto:mail@uli.io">mail@uli.io</a>
-                <br>
-                <br>
-                built with &hearts;. Hostet on <a href="https://uberspace.de" title="uberspace" target="_blank" rel="noopener noreferrer">Uberspace</a>
-            </p>
+            <a href="/impressum">Impressum</a>
         </footer>
-
-        <script>
-            function init() {
-                document.getElementById('imprint-trigger').onclick = triggerImprint
-            }
-
-            function triggerImprint() {
-                let imprint = document.getElementById('imprint');
-                imprint.classList.contains('hidden') ? imprint.classList.remove('hidden') : imprint.classList.add('hidden')
-            }
-
-            window.onload = init;
-        </script>
     </body>
 </html>

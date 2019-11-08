@@ -1,11 +1,21 @@
-RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteCond %{ENV:HTTPS} !=on
-RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+# Prevent people from looking directly into folders
+Options -Indexes
 
-Redirect 301 /fb https://www.facebook.com/uli.ehler
-Redirect 301 /twitter https://twitter.com/uligeller
-Redirect 301 /github https://github.com/uehler
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+
+    # some conditions for the url rewrite
+    # request may not be an existing directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # request may not be an existing file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # request may not be an exisiting symbolic link
+    RewriteCond %{REQUEST_FILENAME} !-l
+    # if conditions are true store the request in the url-param
+    RewriteRule ^(.+)$ $1.html [QSA,L]
+</IfModule>
+
 
 <IfModule mod_expires.c>
   ExpiresActive On
