@@ -3,9 +3,6 @@ Options -Indexes
 
 # rewrites
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteCond %{ENV:HTTPS} !=on
-RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI}.html [R=301,L]
 # some conditions for the url rewrite
 # request may not be an existing directory
 RewriteCond %{REQUEST_FILENAME} !-d
