@@ -105,10 +105,6 @@
                 color: #189eff
             }
 
-            .hidden {
-                display: none
-            }
-
             footer {
                 font-size: .5em;
                 margin: 150px 0;
@@ -180,31 +176,7 @@
         </main>
 
         <footer>
-            <p id="imprint-trigger">
-                Impressum
-            </p>
-            <p id="imprint" class="hidden">
-                Uli Ehler<br>
-                Nelkenweg 3<br>
-                82327 Tutzing<br>
-                <a href="mailto:mail@uli.io">mail@uli.io</a>
-                <br>
-                <br>
-                built with &hearts;. Hostet on <a href="https://uberspace.de" title="uberspace" target="_blank" rel="noopener noreferrer">Uberspace</a>
-            </p>
+            <a href="/impressum">Impressum</a>
         </footer>
-
-        <script>
-            function init() {
-                document.getElementById('imprint-trigger').onclick = triggerImprint
-            }
-
-            function triggerImprint() {
-                let imprint = document.getElementById('imprint');
-                imprint.classList.contains('hidden') ? imprint.classList.remove('hidden') : imprint.classList.add('hidden')
-            }
-
-            window.onload = init;
-        </script>
     </body>
 </html>
