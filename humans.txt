@@ -2,7 +2,7 @@
 Your title: Uli Ehler
 Site: https://uli.io
 Twitter: uligeller
-Location: Munich, Germany
+Location: Pegnitz, Germany
 
 /* SITE */
 Standards: HTML5, CSS3
